@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EEEditingViewController"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8vQ-TW-UGj">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <items>
+                <barButtonItem image="ic_format_size" id="1ew-RQ-as2">
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="setFontSize:" destination="-1" id="q1q-Lg-QVh"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="6Xf-qP-cGc"/>
+                <barButtonItem image="ic_format_align_left" id="Fh9-rW-kx7">
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="setAlignment:" destination="-1" id="0e1-tL-8rU"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="SBc-EV-Dbe"/>
+                <barButtonItem image="ic_fiber_manual_record" id="oi3-K8-Bi0">
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="setColor:" destination="-1" id="Htw-Fd-5Bq"/>
+                    </connections>
+                </barButtonItem>
+            </items>
+            <point key="canvasLocation" x="292" y="220"/>
+        </toolbar>
+    </objects>
+    <resources>
+        <image name="ic_fiber_manual_record" width="24" height="24"/>
+        <image name="ic_format_align_left" width="24" height="24"/>
+        <image name="ic_format_size" width="24" height="24"/>
+    </resources>
+</document>
