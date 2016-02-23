@@ -8,6 +8,10 @@
 
 #import "EEEditingViewController.h"
 
+#define FONT_SIZE_SMALL 15
+#define FONT_SIZE_MEDIUM 20
+#define FONT_SIZE_LARGE 25
+
 @interface EEEditingViewController ()<UITextViewDelegate>
 {
     NSRange rangeParagraph;
@@ -25,6 +29,10 @@
     
     // set init data for text view
     self.textView.text = @"con cua con ca\ncon ga con meo\ncon heo con bo";
+    
+    // init attribute for uitextview
+    self.textView.textColor = [UIColor blackColor];
+    self.textView.textAlignment = NSTextAlignmentLeft;
 }
 
 #pragma mark set font size for text
@@ -33,8 +41,22 @@
     // get current cursor location
     [self getCursorLocation:self.textView];
     
+    // get current attribute of cursor location
+    NSDictionary *dic = [self.textView.textStorage attributesAtIndex:rangeParagraph.location effectiveRange:nil];
+    
+    CGFloat fontSize;
+    
+    // change font size small - medium - large
+    if ([dic[NSFontAttributeName] isEqual:[UIFont systemFontOfSize:FONT_SIZE_MEDIUM]]) {
+        fontSize = FONT_SIZE_LARGE;
+    } else if ([dic[NSFontAttributeName] isEqual:[UIFont systemFontOfSize:FONT_SIZE_LARGE]]) {
+        fontSize = FONT_SIZE_SMALL;
+    } else {
+        fontSize = FONT_SIZE_MEDIUM;
+    }
+    
     // add attribute font size for paragraph
-    [self.textView.textStorage addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:25] range:NSMakeRange(rangeParagraph.location, rangeParagraph.length)];
+    [self.textView.textStorage addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:fontSize] range:NSMakeRange(rangeParagraph.location, rangeParagraph.length)];
 }
 
 #pragma mark set alignment for text
@@ -43,9 +65,18 @@
     // get current cursor location
     [self getCursorLocation:self.textView];
     
+    // get current attribute of cursor location
+    NSDictionary *dic = [self.textView.textStorage attributesAtIndex:rangeParagraph.location effectiveRange:nil];
+
     NSMutableParagraphStyle *paragrahStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragrahStyle setAlignment:NSTextAlignmentRight];
     
+    // change alignment left - center - right
+    if ([[dic objectForKey:NSParagraphStyleAttributeName] alignment] == 2) {
+        [paragrahStyle setAlignment:0];
+    } else {
+        [paragrahStyle setAlignment:[[dic objectForKey:NSParagraphStyleAttributeName] alignment] + 1];
+    }
+
     // add attribute alignment for paragraph
     [self.textView.textStorage addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(rangeParagraph.location, rangeParagraph.length)];
 }
@@ -56,8 +87,26 @@
     // get current cursor location
     [self getCursorLocation:self.textView];
     
+    // get current attribute of cursor location
+    NSDictionary *dic = [self.textView.textStorage attributesAtIndex:rangeParagraph.location effectiveRange:nil];
+    
+    // color of cursor location
+    UIColor *currentColor = [dic objectForKey:NSForegroundColorAttributeName];
+    
+    // new color to set color for paragraph
+    UIColor *newColor;
+
+    // change color black - green - brown
+    if ([currentColor isEqual:[UIColor blackColor]]) {
+        newColor = [UIColor greenColor];
+    } else if ([currentColor isEqual:[UIColor greenColor]]) {
+        newColor = [UIColor brownColor];
+    } else {
+        newColor = [UIColor blackColor];
+    }
+
     // add attribute color for paragraph
-    [self.textView.textStorage addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(rangeParagraph.location, rangeParagraph.length)];
+    [self.textView.textStorage addAttribute:NSForegroundColorAttributeName value:newColor range:NSMakeRange(rangeParagraph.location, rangeParagraph.length)];
 }
 
 #pragma mark get range of paragraph
@@ -85,6 +134,5 @@
 - (void) getCursorLocation:(UITextView *)inView {
     rangeParagraph = [self detectParagraph:inView.selectedRange.location];
 }
-
 
 @end
