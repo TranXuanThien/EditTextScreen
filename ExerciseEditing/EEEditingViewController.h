@@ -12,6 +12,5 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
-
 @end
 

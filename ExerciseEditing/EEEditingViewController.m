@@ -7,10 +7,11 @@
 //
 
 #import "EEEditingViewController.h"
+#import "Enums.h"
 
-#define FONT_SIZE_SMALL 15
-#define FONT_SIZE_MEDIUM 20
-#define FONT_SIZE_LARGE 25
+#define FONT_COLOR_FIRST [UIColor blackColor]
+#define FONT_COLOR_SECOND [UIColor greenColor]
+#define FONT_COLOR_THIRD [UIColor brownColor]
 
 @interface EEEditingViewController ()<UITextViewDelegate>
 {
@@ -38,8 +39,8 @@
 #pragma mark set font size for text
 - (IBAction)setFontSize:(id)sender {
     
-    // get current cursor location
-    [self getCursorLocation:self.textView];
+    // get range of paragraph at current cursor location
+    rangeParagraph = [EEEditingViewController getCursorLocation:self.textView];
     
     // get current attribute of cursor location
     NSDictionary *dic = [self.textView.textStorage attributesAtIndex:rangeParagraph.location effectiveRange:nil];
@@ -62,8 +63,8 @@
 #pragma mark set alignment for text
 - (IBAction)setAlignment:(id)sender {
     
-    // get current cursor location
-    [self getCursorLocation:self.textView];
+    // get range of paragraph at current cursor location
+    rangeParagraph = [EEEditingViewController getCursorLocation:self.textView];
     
     // get current attribute of cursor location
     NSDictionary *dic = [self.textView.textStorage attributesAtIndex:rangeParagraph.location effectiveRange:nil];
@@ -84,8 +85,8 @@
 #pragma mark set color for text
 - (IBAction)setColor:(id)sender {
     
-    // get current cursor location
-    [self getCursorLocation:self.textView];
+    // get range of paragraph at current cursor location
+    rangeParagraph = [EEEditingViewController getCursorLocation:self.textView];
     
     // get current attribute of cursor location
     NSDictionary *dic = [self.textView.textStorage attributesAtIndex:rangeParagraph.location effectiveRange:nil];
@@ -97,12 +98,12 @@
     UIColor *newColor;
 
     // change color black - green - brown
-    if ([currentColor isEqual:[UIColor blackColor]]) {
-        newColor = [UIColor greenColor];
-    } else if ([currentColor isEqual:[UIColor greenColor]]) {
-        newColor = [UIColor brownColor];
+    if ([currentColor isEqual:FONT_COLOR_FIRST]) {
+        newColor = FONT_COLOR_SECOND;
+    } else if ([currentColor isEqual:FONT_COLOR_SECOND]) {
+        newColor = FONT_COLOR_THIRD;
     } else {
-        newColor = [UIColor blackColor];
+        newColor = FONT_COLOR_FIRST;
     }
 
     // add attribute color for paragraph
@@ -110,20 +111,20 @@
 }
 
 #pragma mark get range of paragraph
-- (NSRange)detectParagraph:(NSUInteger)location {
++ (NSRange)detectParagraph:(NSUInteger)location inView:(UITextView *)textView {
     
     // get paragraphs in UITextView
-    NSArray *paragraphs = [self.textView.text componentsSeparatedByString:@"\n"];
+    NSArray *paragraphs = [textView.text componentsSeparatedByString:@"\n"];
     
     NSRange range;
     for (int i = 0; i < paragraphs.count; i++) {
-        if (location >= [self.textView.text rangeOfString:paragraphs[i]].location) {
+        if (location >= [textView.text rangeOfString:paragraphs[i]].location) {
             if (i + 1 < paragraphs.count) {
-                if (location <= [self.textView.text rangeOfString:paragraphs[i + 1]].location) {
-                    range = [self.textView.text rangeOfString:paragraphs[i]];
+                if (location <= [textView.text rangeOfString:paragraphs[i + 1]].location) {
+                    range = [textView.text rangeOfString:paragraphs[i]];
                 }
             } else {
-                range = [self.textView.text rangeOfString:paragraphs[i]];
+                range = [textView.text rangeOfString:paragraphs[i]];
             }
         }
     }
@@ -131,8 +132,8 @@
 }
 
 #pragma mark get cursor location
-- (void) getCursorLocation:(UITextView *)inView {
-    rangeParagraph = [self detectParagraph:inView.selectedRange.location];
++ (NSRange) getCursorLocation:(UITextView *)inView {
+    return [self detectParagraph:inView.selectedRange.location inView:inView];
 }
 
 @end

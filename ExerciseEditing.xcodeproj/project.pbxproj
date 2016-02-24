@@ -17,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A57E4C81C7E1D6300B72BBA /* Enums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
 		3A69FEC01C7B5BD300B2A96E /* ExerciseEditing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExerciseEditing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A69FEC41C7B5BD300B2A96E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3A69FEC61C7B5BD300B2A96E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 				3A69FED41C7B5BD300B2A96E /* Info.plist */,
 				3A69FEC31C7B5BD300B2A96E /* Supporting Files */,
 				3A69FEDA1C7B5C2B00B2A96E /* EEToolBarCustom.xib */,
+				3A57E4C81C7E1D6300B72BBA /* Enums.h */,
 			);
 			path = ExerciseEditing;
 			sourceTree = "<group>";
@@ -302,6 +304,7 @@
 				3A69FED91C7B5BD300B2A96E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
