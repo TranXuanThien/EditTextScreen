@@ -14,6 +14,7 @@
 		3A69FED01C7B5BD300B2A96E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A69FECF1C7B5BD300B2A96E /* Assets.xcassets */; };
 		3A69FED31C7B5BD300B2A96E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A69FED11C7B5BD300B2A96E /* LaunchScreen.storyboard */; };
 		3A69FEDB1C7B5C2B00B2A96E /* EEToolBarCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A69FEDA1C7B5C2B00B2A96E /* EEToolBarCustom.xib */; settings = {ASSET_TAGS = (); }; };
+		3AE061591C7F47B6006477C3 /* EEProcessParagraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE061581C7F47B6006477C3 /* EEProcessParagraph.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		3A69FED21C7B5BD300B2A96E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A69FED41C7B5BD300B2A96E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A69FEDA1C7B5C2B00B2A96E /* EEToolBarCustom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EEToolBarCustom.xib; sourceTree = "<group>"; };
+		3AE061571C7F47B6006477C3 /* EEProcessParagraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEProcessParagraph.h; sourceTree = "<group>"; };
+		3AE061581C7F47B6006477C3 /* EEProcessParagraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEProcessParagraph.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				3A69FEC31C7B5BD300B2A96E /* Supporting Files */,
 				3A69FEDA1C7B5C2B00B2A96E /* EEToolBarCustom.xib */,
 				3A57E4C81C7E1D6300B72BBA /* Enums.h */,
+				3AE061571C7F47B6006477C3 /* EEProcessParagraph.h */,
+				3AE061581C7F47B6006477C3 /* EEProcessParagraph.m */,
 			);
 			path = ExerciseEditing;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 			files = (
 				3A69FECB1C7B5BD300B2A96E /* EEEditingViewController.m in Sources */,
 				3A69FEC81C7B5BD300B2A96E /* AppDelegate.m in Sources */,
+				3AE061591C7F47B6006477C3 /* EEProcessParagraph.m in Sources */,
 				3A69FEC51C7B5BD300B2A96E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
